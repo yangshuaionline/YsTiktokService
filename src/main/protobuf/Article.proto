@@ -1,0 +1,17 @@
+syntax = "proto3";
+package  ysblog;
+//文章相关接口的protobuf
+
+//上传文章
+message UpArticle {
+  int64 author = 1;//作者id
+  int64 type = 2;//发布类型
+  string title = 3;//文章标题
+	string markdown = 4;//markdown文章内容
+	string html = 5;//markdown文章内容对应html文件
+
+
+  int64 code = 6;//服务器返回错误码
+  string msg = 7;//服务器错误码说明
+}
+
