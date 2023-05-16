@@ -1,5 +1,14 @@
 - [CSDN](https://blog.csdn.net/yangshuaionline)
 - [GitHub](https://github.com/yangshuaionline/YsTiktokService)
+
+### 用到技术
+> 容器：docker
+> 数据库：mysql
+> 代理服务器：nginx
+
+
+
+
 - 目录结构：
 
     -   java

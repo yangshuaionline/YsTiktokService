@@ -16,20 +16,52 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
+        <gson.version>2.8.5</gson.version>
+        <!--protobuf-->
+        <grpc.version>1.11.0</grpc.version>
+        <protobuf.version>3.9.1</protobuf.version>
         <mybatis.version>2.1.1</mybatis.version>
         <mysql.version>8.0.12</mysql.version>
-        <gson.version>2.8.5</gson.version>
+        <json.version>20160810</json.version>
+        <tomcat-embed-jasper.version>9.0.27</tomcat-embed-jasper.version>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
+        <!--        tomcat容器-->
+        <!--自带嵌入式tomcat-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <!--<dependency>-->
+        <!--<groupId>org.apache.tomcat.embed</groupId>-->
+        <!--<artifactId>tomcat-embed-jasper</artifactId>-->
+        <!--<scope>${tomcat-embed-jasper.version}</scope>-->
+        <!--</dependency>-->
+        <!--如果不指定scope为provided，打包时会加进去，与tomcat-embed-jasper中自带的jar包冲突，程序会出错。-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <!--支持html-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <!--            <scope>provided</scope>  windows版本需要注销掉-->
+        </dependency>
+        <!--        数据库-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -37,25 +69,88 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis.version}</version>
         </dependency>
+        <!--junit单元测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--       others-->
         <!-- Gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
+        </dependency>
+        <!--//json解析-->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+        <!-- redis依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.0.4.RELEASE</version>
+        </dependency>
+        <!-- lettuce pool缓存连接池-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+        <!-- 日志 -->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--protobuf-->
+        <!--        guava版本为20.0，和selenium冲突，selenium是25.0 -->
+        <!--        <dependency>-->
+        <!--            <groupId>io.grpc</groupId>-->
+        <!--            <artifactId>grpc-netty</artifactId>-->
+        <!--            <version>${grpc.version}</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.grpc</groupId>-->
+        <!--            <artifactId>grpc-protobuf</artifactId>-->
+        <!--            <version>${grpc.version}</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.grpc</groupId>-->
+        <!--            <artifactId>grpc-stub</artifactId>-->
+        <!--            <version>${grpc.version}</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf.version}</version>
+        </dependency>
+        <!--        seleniumhq-->
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.53.0</version>
         </dependency>
     </dependencies>
 

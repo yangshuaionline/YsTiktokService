@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @ServletComponentScan//filter拦截生效
-@MapperScan("yang.shuai.mapper")//扫描调用mapper的class文件
+@MapperScan("yang.shuai.ys_tiktok_service.mapper")//扫描调用mapper的class文件
 @SpringBootApplication
 public class YsTiktokServiceApplication {
 
