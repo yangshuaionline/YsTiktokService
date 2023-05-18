@@ -12,9 +12,9 @@ public class PhoneCode {
     //手机号
     private String phone;
     //验证码
-    private String code;
+    private int code;
     //分类 0为app 1为运营后台
-    private String loginType;
+    private int code_type;
     //发送时间
     private Timestamp sendTime;
     @Override
@@ -23,7 +23,7 @@ public class PhoneCode {
         jsonObject.put("id",id);
         jsonObject.put("phone",phone);
         jsonObject.put("code",code);
-        jsonObject.put("type",loginType);
+        jsonObject.put("code_type",code_type);
         jsonObject.put("time", sendTime.toString());
         return jsonObject.toString();
     }
@@ -36,11 +36,11 @@ public class PhoneCode {
         this.phone = phone;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -52,12 +52,12 @@ public class PhoneCode {
         this.id = id;
     }
 
-    public String getType() {
-        return loginType;
+    public int getCode_type() {
+        return code_type;
     }
 
-    public void setType(String loginType) {
-        this.loginType = loginType;
+    public void setCode_type(int code_type) {
+        this.code_type = code_type;
     }
 
     public Timestamp getSendTime() {

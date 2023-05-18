@@ -9,7 +9,7 @@ public class ReturnUtils {
     public static ReturnEntity getEntity(int code, String msg, Object data){
         ReturnEntity entity = new ReturnEntity();
         entity.setCode(code);
-        entity.setMsg(msg);
+        entity.setMessage(msg);
         entity.setData(data);
         return entity;
     }

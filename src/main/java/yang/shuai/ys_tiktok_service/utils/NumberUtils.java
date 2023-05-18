@@ -9,14 +9,15 @@ import java.util.regex.Pattern;
  * */
 public class NumberUtils {
     //生成随机六位数字（没有对接短信平台之前暂时替代）
-    public static String getRandomNumber(){
+    public static int getRandomNumber(){
         // 创建 Random 对象
         Random rand = new Random();
         // 生成随机数，并保证在 0~999999 之间
-        int num = rand.nextInt(1000000);
+        int num = rand.nextInt(900000);
+        num += 100000;
         // 将数字格式化为六位字符串
-        String randomNum = String.format("%06d", num);
-        return randomNum;
+//        String randomNum = String.format("%06d", num);
+        return num;
     }
 
     public static boolean isPhoneNumber(String phone){

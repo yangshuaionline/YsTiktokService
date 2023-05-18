@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace属性是名称空间，必须唯一 -->
+<mapper namespace="yang.shuai.ys_tiktok_service.mapper.UsersMapper">
+    <!--创建表-->
+    <update id="createTable">
+        create table if not exists users(
+            id int(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+            head_pic varchar(100) not null,
+            user_name varchar(100) not null,
+            pw varchar(100) not null,
+            account varchar(100) not null,
+            phone varchar(100) not null,
+            ip varchar(100) not null,
+            pos int(12) not null,
+            login_type int(12) not null,
+            introduction varchar(100) not null,
+            token varchar(255) not null
+        )ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+    </update>
+    <!--增-->
+    <insert id="add" parameterType="yang.shuai.ys_tiktok_service.dao.Users">
+        insert into users
+          (head_pic,user_name,pw,account,phone,ip,pos,login_type,introduction,token)
+        values(#{head_pic},#{user_name},#{pw},#{account},#{phone},#{ip},#{pos},#{login_type},#{introduction},#{token});
+    </insert>
+    <!--删-->
+    <delete id="del" parameterType="yang.shuai.ys_tiktok_service.dao.Users">
+        delete from users where id = #{id};
+    </delete>
+    <!--改-->
+    <update id="update" parameterType="yang.shuai.ys_tiktok_service.dao.Users">
+        update users
+        set
+            head_pic = #{head_pic},
+            user_name = #{user_name},
+            pw = #{pw},
+            account = #{account},
+            phone = #{phone},
+            ip = #{ip},
+            pos = #{pos},
+            login_type = #{login_type},
+            account = #{account},
+            introduction = #{introduction},
+            token = #{token}
+        where phone = #{phone} and login_type = #{login_type};
+    </update>
+    <!--查-->
+    <select id="sel" parameterType="yang.shuai.ys_tiktok_service.dao.Users" resultType="yang.shuai.ys_tiktok_service.dao.Users">
+        select * from users where phone = #{phone} and login_type = #{login_type};
+    </select>
+    <!--通过id查-->
+    <select id="selWithId" parameterType="java.lang.Integer" resultType="yang.shuai.ys_tiktok_service.dao.Users">
+        select * from users where id = #{id};
+    </select>
+</mapper>

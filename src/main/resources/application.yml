@@ -1,0 +1,6 @@
+# jwt 配置
+jwt:
+  header: "Authorization"     # token 返回头部
+  tokenPrefix: "Bearer "      # token 前缀
+  secret: "qwertyuiop1214156" # 私钥
+  expireTime: 43200            # token 的有效时间，单位是分钟

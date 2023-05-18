@@ -9,16 +9,16 @@
         create table if not exists phone_code(
             id int(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
             phone varchar(100) not null,
-            code varchar(50) not null,
-            loginType varchar(50) not null,
+            code int(12) not null,
+            code_type int(12) not null,
             sendTime timestamp not null
         )ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
     </update>
     <!--增-->
     <insert id="add" parameterType="yang.shuai.ys_tiktok_service.dao.PhoneCode">
         insert into phone_code
-          (phone,code,loginType,sendTime)
-        values(#{phone},#{code},#{loginType},#{sendTime});
+          (phone,code,code_type,sendTime)
+        values(#{phone},#{code},#{code_type},#{sendTime});
     </insert>
     <!--删-->
     <delete id="del" parameterType="yang.shuai.ys_tiktok_service.dao.PhoneCode">
@@ -30,13 +30,13 @@
         set
         phone = #{phone},
         code = #{code},
-        loginType = #{loginType},
+        code_type = #{code_type},
         sendTime = #{sendTime}
-        where phone = #{phone} and loginType = #{loginType};
+        where phone = #{phone} and code_type = #{code_type};
     </update>
     <!--查-->
     <select id="sel" parameterType="yang.shuai.ys_tiktok_service.dao.PhoneCode" resultType="yang.shuai.ys_tiktok_service.dao.PhoneCode">
-        select * from phone_code where phone = #{phone} and loginType = #{loginType};
+        select * from phone_code where phone = #{phone} and code_type = #{code_type};
     </select>
     <!--通过id查-->
     <select id="selWithId" parameterType="java.lang.Integer" resultType="yang.shuai.ys_tiktok_service.dao.PhoneCode">
